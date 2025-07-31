@@ -1,10 +1,18 @@
 import React from 'react'     //rafce shortcut for boiler plate code 
-
+import {BrowserRouter,Routes,Route} from "react-router-dom"
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
 const App = () => {
   return (
-    <div className="text-pink-300">
-      App
-    </div>
+   <>
+   <BrowserRouter>
+   <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path='/register' element={<Register/>}/>
+   </Routes>
+   </BrowserRouter>
+   </>
   )
 }
 
