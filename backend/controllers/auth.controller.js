@@ -1,5 +1,5 @@
- import bcryptjs from "bcryptjs"
- import User from "../models/User.js"
+import bcryptjs from "bcryptjs"
+import User from "../models/User.js"
 import { errorHandler } from "../utils/error.js"
  
  
@@ -31,4 +31,25 @@ import { errorHandler } from "../utils/error.js"
         next(error)
     }
 
+ }
+
+
+ export const login= async(req,res,next) =>
+ {
+    const {email,password}=req.body
+
+    if(!email || ! password || email==="" || password==="")
+    {
+        return next(errorHandler(400,"All fiels are required."))
+    }
+
+     try 
+     {
+       const validUser=await User.findOne()
+     }
+     catch(error)
+     {
+        next(error)
+     }
+    
  }

@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI).then(
 const app=express()
 
 
-//for allowing session object in request body
+//for allowing json object in request body
 app.use(express.json())
 
 app.listen(3000,()=>{
