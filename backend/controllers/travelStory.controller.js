@@ -56,3 +56,22 @@ export const getAllTravelStroy = async(req,res,next) =>{
         next(error)
     }
 }
+
+export const imageUpload = async(req,res,next) =>{
+
+    try 
+    {
+       if(!req.file)
+       {
+        return next(errorHandler(400,"No image uploaded"))
+       }
+
+       const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`
+
+       res.status(201).json({imageUrl})
+    }
+    catch(error)
+    {
+        next(error)
+    }
+}
