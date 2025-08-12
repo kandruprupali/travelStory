@@ -264,3 +264,26 @@ export const searchTravelStory = async(req,res,next) =>{
  }
 
 }
+
+export const filterTravelStories = async(req,res,next) =>{
+
+    const {startDate , endDate} = req.query 
+    const userId = req.user.id
+
+    try 
+    {
+       const start = new Date(parseInt(startDate))
+       const end = new Date(parseInt(endDate))
+    
+       const filterdStories = await TravelStory.find({
+        userId:userId,
+        visitedDate:{$gte:start,$lte:end}
+       }).sort({isFavorite:-1})
+
+       res.status(200).json({stories: filterdStories})
+    }
+    catch(error)
+    {
+        next(error)
+    }
+}
