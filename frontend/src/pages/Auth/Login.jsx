@@ -47,7 +47,7 @@ const Login = () => {
 
       if (response.data) {
         dispatch(signInSuccess(response.data))
-        navigate("/")
+        // navigate("/")
       } else {
         dispatch(signInFailure("An unexpected error occurred!"))
       }
